@@ -9,8 +9,8 @@ type GameStatus struct {
 	Players     []entity.Player `json:"players"`
 }
 
-func (g *GameService) GetGameStatus() (GameStatus, error) {
-	players, err := g.playersRepo.FetchAllPlayers()
+func (s *GameService) GetGameStatus() (GameStatus, error) {
+	players, err := s.playersRepo.FetchAllPlayers()
 	if err != nil {
 		return GameStatus{}, err
 	}

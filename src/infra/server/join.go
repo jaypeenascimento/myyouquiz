@@ -5,12 +5,12 @@ import (
 	"net/http"
 )
 
-type params struct {
+type joinParams struct {
 	Name string `json:"name"`
 }
 
 func (s *server) JoinHandler(res http.ResponseWriter, req *http.Request) {
-	var params params
+	var params joinParams
 	decoder := json.NewDecoder(req.Body)
 	err := decoder.Decode(&params)
 	if err != nil {

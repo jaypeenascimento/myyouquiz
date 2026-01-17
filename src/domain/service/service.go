@@ -14,11 +14,13 @@ func NewService(playerRepo repository.PlayerRepository) *PlayerService {
 }
 
 type GameService struct {
-	playersRepo repository.PlayerRepository
+	playersRepo    repository.PlayerRepository
+	gameRepository repository.GameRepository
 }
 
-func NewGameService(playerRepo repository.PlayerRepository) *GameService {
+func NewGameService(playerRepo repository.PlayerRepository, gameRepository repository.GameRepository) *GameService {
 	return &GameService{
-		playersRepo: playerRepo,
+		playersRepo:    playerRepo,
+		gameRepository: gameRepository,
 	}
 }
