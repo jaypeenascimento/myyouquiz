@@ -15,21 +15,14 @@ type gameStartedResponse struct {
 }
 
 func (s *server) GameStartedHandler(res http.ResponseWriter, req *http.Request) {
-	var params gameStartedParams
-
-	decoder := json.NewDecoder(req.Body)
-	err := decoder.Decode(&params)
-	if err != nil {
-		res.WriteHeader(http.StatusUnprocessableEntity)
-		return
-	}
+	playerName := req.PathValue("name")
 
 	var response gameStartedResponse
 	encoder := json.NewEncoder(res)
 
 	if s.gameService.IsGameStarted() {
 
-		role, err := s.gameService.GetRoleOfPlayer(params.Name)
+		role, err := s.gameService.GetRoleOfPlayer(playerName)
 		if err != nil {
 			sendInternalServerError(res, err)
 			return

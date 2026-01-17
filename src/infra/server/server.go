@@ -24,7 +24,8 @@ func NewServer(playerService *service.PlayerService, gameService *service.GameSe
 	router.HandleFunc("GET /health", s.HealthHandler)
 	router.HandleFunc("POST /join", s.JoinHandler)
 	router.HandleFunc("GET /game-status", s.StatusHandler)
-	router.HandleFunc("GET /game-started", s.GameStartedHandler)
+	router.HandleFunc("GET /game-started/{name}", s.GameStartedHandler)
+	router.HandleFunc("POST /start", s.StartHandler)
 
 	return router
 }

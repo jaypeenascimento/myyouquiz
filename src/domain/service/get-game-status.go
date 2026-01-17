@@ -15,7 +15,12 @@ func (s *GameService) GetGameStatus() (GameStatus, error) {
 		return GameStatus{}, err
 	}
 
+	game, _ := s.gameRepository.GetGame()
+
 	return GameStatus{
-		Players: players,
+		CurrentKing: game.KingPlayer,
+		ScoreToWin:  game.ScoreToWin,
+		LetterQueue: game.LetterQueue,
+		Players:     players,
 	}, nil
 }

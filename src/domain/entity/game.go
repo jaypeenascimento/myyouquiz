@@ -1,7 +1,7 @@
 package entity
 
 type Game struct {
-	KingPlayer  string `json:"kingPlayer"`
-	LetterQueue string `json:"letterQueue"`
-	ScoreToWin  string `json:"scoreToWin"`
+	KingPlayer  string   `json:"kingPlayer"`
+	LetterQueue []Letter `json:"letterQueue"`
+	ScoreToWin  int      `json:"scoreToWin"`
 }
