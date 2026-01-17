@@ -12,3 +12,13 @@ func NewService(playerRepo repository.PlayerRepository) *PlayerService {
 		playersRepo: playerRepo,
 	}
 }
+
+type GameService struct {
+	playersRepo repository.PlayerRepository
+}
+
+func NewGameService(playerRepo repository.PlayerRepository) *GameService {
+	return &GameService{
+		playersRepo: playerRepo,
+	}
+}

@@ -14,8 +14,9 @@ func main() {
 
 	playerRepo := playerstore.NewPlayerstore()
 	playerService := service.NewService(playerRepo)
+	gameService := service.NewGameService(playerRepo)
 
-	mux := server.NewServer(playerService)
+	mux := server.NewServer(playerService, gameService)
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		panic(fmt.Sprintf("Server crashed with error: %s", err.Error()))
 	}

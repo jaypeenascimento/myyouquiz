@@ -9,11 +9,13 @@ import (
 
 type server struct {
 	playerService *service.PlayerService
+	gameService   *service.GameService
 }
 
-func NewServer(playerService *service.PlayerService) http.Handler {
+func NewServer(playerService *service.PlayerService, gameService *service.GameService) http.Handler {
 	s := server{
 		playerService: playerService,
+		gameService:   gameService,
 	}
 
 	router := http.NewServeMux()
@@ -21,6 +23,7 @@ func NewServer(playerService *service.PlayerService) http.Handler {
 	// Registering routes
 	router.HandleFunc("GET /health", s.HealthHandler)
 	router.HandleFunc("POST /join", s.JoinHandler)
+	router.HandleFunc("GET /game-status", s.StatusHandler)
 
 	return router
 }
