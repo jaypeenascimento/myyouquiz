@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func HealthHandler(res http.ResponseWriter, req *http.Request) {
+func (s *server) HealthHandler(res http.ResponseWriter, req *http.Request) {
 	_, err := fmt.Fprint(res, "I'm Alive")
 	res.WriteHeader(http.StatusOK)
 

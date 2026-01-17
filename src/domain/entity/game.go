@@ -1,4 +1,4 @@
-package entities
+package entity
 
 type Game struct {
 	KingPlayer  string `json:"kingPlayer"`
